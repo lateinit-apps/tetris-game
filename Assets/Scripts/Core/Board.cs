@@ -10,10 +10,10 @@ public class Board : MonoBehaviour
     public int header = 8;
 
     private Transform[,] grid;
-    
+
     private void Awake()
     {
-        grid = new Transform[width, height];        
+        grid = new Transform[width, height];
     }
 
     private void Start()
@@ -23,7 +23,37 @@ public class Board : MonoBehaviour
 
     private void Update()
     {
-        
+
+    }
+
+    private bool IsWithinBoard(int x, int y)
+    {
+        return (x >= 0 && x < width && y >= 0);
+    }
+
+    private bool IsOccupied(int x, int y, Shape shape)
+    {
+        return (grid[x, y] != null && grid[x, y].parent != shape.transform);
+    }
+
+    public bool IsValidPosition(Shape shape)
+    {
+        foreach (Transform child in shape.transform)
+        {
+            Vector2 pos = Vectorf.Round(child.position);
+
+            if (!IsWithinBoard((int)pos.x, (int)pos.y))
+            {
+                return false;
+            }
+
+            if (IsOccupied((int)pos.x, (int)pos.y, shape))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void DrawEmptyCells()
@@ -44,6 +74,20 @@ public class Board : MonoBehaviour
         else
         {
             Debug.Log("WARNING! Please assign the emptySprite object!");
+        }
+    }
+
+    public void StoreShapeInGrid(Shape shape)
+    {
+        if (shape == null)
+        {
+            return;
+        }
+
+        foreach (Transform child in shape.transform)
+        {
+            Vector2 pos = Vectorf.Round(child.position);
+            grid[(int)pos.x, (int)pos.y] = child;
         }
     }
 }
