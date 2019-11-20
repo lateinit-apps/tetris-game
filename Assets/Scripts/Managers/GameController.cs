@@ -8,10 +8,26 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Spawner spawner;
 
+    private Shape activeShape;
+
+    private float dropInterval = 1f;
+
+    private float timeToDrop = 1f;
+
     private void Start()
     {
         gameBoard = GameObject.FindObjectOfType<Board>();
         spawner = GameObject.FindObjectOfType<Spawner>();
+
+        if (spawner)
+        {
+            if (activeShape == null)
+            {
+                activeShape = spawner.SpawnShape();
+            }
+
+            spawner.transform.position = Vectorf.Round(spawner.transform.position);
+        }
 
         if (!gameBoard)
         {
@@ -22,14 +38,23 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("WARNING! There is no spawner defined!");
         }
-        else
-        {
-            spawner.transform.position = Vectorf.Round(spawner.transform.position);
-        }
     }
 
     private void Update()
     {
+        if (!gameBoard || !spawner)
+        {
+            return;
+        }
 
+        if (Time.time > timeToDrop)
+        {
+            timeToDrop = Time.time + dropInterval;
+
+            if (activeShape)
+            {
+                activeShape.MoveDown();
+            }
+        }
     }
 }
