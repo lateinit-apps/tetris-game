@@ -1631,6 +1631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f200812584849d74b8446df839a8514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyRepeatRateLeftRight: 0.1
+  keyRepeatRateDown: 0.05
+  keyRepeatRateRotate: 0.05
 --- !u!4 &1518351290
 Transform:
   m_ObjectHideFlags: 0
