@@ -2,8 +2,10 @@
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
     private Board gameBoard;
 
+    [SerializeField]
     private Spawner spawner;
 
     private void Start()
@@ -19,6 +21,10 @@ public class GameController : MonoBehaviour
         if (!spawner)
         {
             Debug.Log("WARNING! There is no spawner defined!");
+        }
+        else
+        {
+            spawner.transform.position = Vectorf.Round(spawner.transform.position);
         }
     }
 

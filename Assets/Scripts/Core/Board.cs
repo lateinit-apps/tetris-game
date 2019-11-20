@@ -9,7 +9,7 @@ public class Board : MonoBehaviour
 
     public int header = 8;
 
-    private Transform [,] grid;
+    private Transform[,] grid;
     
     private void Awake()
     {
