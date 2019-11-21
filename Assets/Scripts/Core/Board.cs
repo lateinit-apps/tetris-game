@@ -11,6 +11,8 @@ public class Board : MonoBehaviour
 
     private Transform[,] grid;
 
+    public int completedRows = 0;
+
     private void Awake()
     {
         grid = new Transform[width, height];
@@ -19,11 +21,6 @@ public class Board : MonoBehaviour
     private void Start()
     {
         DrawEmptyCells();
-    }
-
-    private void Update()
-    {
-
     }
 
     private bool IsWithinBoard(int x, int y)
@@ -142,10 +139,13 @@ public class Board : MonoBehaviour
 
     public void ClearAllRows()
     {  
+        completedRows = 0;
+
         for (int y = 0; y < height; y++)
         {
             if (IsComplete(y))
             {
+                completedRows++; 
                 ClearRow(y);
                 ShiftRowsDown(y + 1);
                 y--;

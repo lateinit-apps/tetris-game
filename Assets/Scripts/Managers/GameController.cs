@@ -179,6 +179,11 @@ public class GameController : MonoBehaviour
         gameBoard.ClearAllRows();
 
         PlaySound(soundManager.dropSound, 0.75f);
+
+        if (gameBoard.completedRows > 0)
+        {
+            PlaySound(soundManager.clearRowSound, 1f);
+        }
     }
 
     private void PlaySound(AudioClip clip, float volumeMultiplier)
