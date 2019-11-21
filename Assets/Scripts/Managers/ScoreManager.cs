@@ -5,19 +5,24 @@ public class ScoreManager : MonoBehaviour
 {
     private int score = 0;
     private int lines;
-    private int level = 1;
 
-    public int linesPerLevel = 5;
+    public int level = 1;
+
+    public int linesPerLevel = 3;
 
     public Text linesText;
     public Text levelText;
     public Text scoreText;
+
+    public bool didLevelUp = false;
 
     private const int minLines = 1;
     private const int maxLines = 1;
 
     public void ScoreLines(int n)
     {
+        didLevelUp = false;
+
         n = Mathf.Clamp(n, minLines, maxLines);
 
         switch (n)
@@ -36,6 +41,13 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
 
+        lines -= n;
+
+        if (lines <= 0)
+        {
+            LevelUp();
+        }
+
         UpdateUIText(); 
     }
 
@@ -43,6 +55,12 @@ public class ScoreManager : MonoBehaviour
     {
         level = 1;
         lines = linesPerLevel * level;
+        UpdateUIText();
+    }
+
+    private void Start()
+    {
+        Reset();
     }
 
     private void UpdateUIText()
@@ -71,5 +89,12 @@ public class ScoreManager : MonoBehaviour
         }
 
         return nStr;
+    }
+
+    public void LevelUp()
+    {
+        level++;
+        lines = linesPerLevel * level;
+        didLevelUp = true;
     }
 }

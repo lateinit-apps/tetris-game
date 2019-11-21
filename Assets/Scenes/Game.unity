@@ -2910,10 +2910,10 @@ MonoBehaviour:
   keyRepeatRateLeftRight: 0.1
   keyRepeatRateDown: 0.05
   keyRepeatRateRotate: 0.05
+  pausePanel: {fileID: 1968456175}
   gameOverPanel: {fileID: 219639869}
   rotateIconToggle: {fileID: 8032506584665241898}
   isPaused: 0
-  pausePanel: {fileID: 1968456175}
 --- !u!4 &1518351290
 Transform:
   m_ObjectHideFlags: 0
@@ -2971,10 +2971,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c705dc7b11fa64e89479b517a38f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linesPerLevel: 5
+  level: 1
+  linesPerLevel: 3
   linesText: {fileID: 1341230655}
   levelText: {fileID: 8032506583891524272}
   scoreText: {fileID: 460561345}
+  didLevelUp: 0
 --- !u!1 &1550159398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,6 +3420,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 767d72846815cea4ca731e5ce2bd46ba, type: 3}
   - {fileID: 8300000, guid: 9b4eaf4dfad34e141829821ce6bde839, type: 3}
   gameOverVocalClip: {fileID: 8300000, guid: f8962ff95f3487044b5eff9f74cfef3a, type: 3}
+  levelUpVocalClip: {fileID: 8300000, guid: f02988d3028315d42aa380bb600f1d9d, type: 3}
   musicIconToggle: {fileID: 8032506584109395478}
   fxIconToggle: {fileID: 8032506584266025313}
 --- !u!1 &1836655186
