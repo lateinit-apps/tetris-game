@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
     private Board gameBoard;
     private Spawner spawner;
     private Shape activeShape;
+    private Ghost ghost;
 
     private SoundManager soundManager;
     private ScoreManager scoreManager;
@@ -41,6 +42,7 @@ public class GameController : MonoBehaviour
     {
         gameBoard = GameObject.FindObjectOfType<Board>();
         spawner = GameObject.FindObjectOfType<Spawner>();
+        ghost = GameObject.FindObjectOfType<Ghost>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
@@ -202,6 +204,11 @@ public class GameController : MonoBehaviour
         activeShape.MoveUp();
         gameBoard.StoreShapeInGrid(activeShape);
 
+        if (ghost)
+        {
+            ghost.Reset();
+        }
+
         activeShape = spawner.SpawnShape();
 
         gameBoard.ClearAllRows();
@@ -216,7 +223,7 @@ public class GameController : MonoBehaviour
             {
                 PlaySound(soundManager.levelUpVocalClip);
                 dropIntervalModded = dropInterval - Mathf.Clamp(
-                        (((float) scoreManager.level - 1) * 0.1f), 0.05f, 1f);
+                        (((float)scoreManager.level - 1) * 0.1f), 0.05f, 1f);
             }
             else
             {
@@ -249,6 +256,14 @@ public class GameController : MonoBehaviour
         }
 
         PlayerInput();
+    }
+
+    private void LateUpdate()
+    {
+        if (ghost)
+        {
+            ghost.DrawGhost(activeShape, gameBoard);
+        }
     }
 
     public void Restart()
