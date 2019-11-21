@@ -2143,6 +2143,7 @@ MonoBehaviour:
   keyRepeatRateDown: 0.05
   keyRepeatRateRotate: 0.05
   gameOverPanel: {fileID: 219639869}
+  rotateIconToggle: {fileID: 8032506584665241898}
 --- !u!4 &1518351290
 Transform:
   m_ObjectHideFlags: 0
@@ -3858,6 +3859,7 @@ GameObject:
   - component: {fileID: 8032506584665241902}
   - component: {fileID: 8032506584665241900}
   - component: {fileID: 8032506584665241903}
+  - component: {fileID: 8032506584665241898}
   m_Layer: 5
   m_Name: RotateIcon
   m_TagString: Untagged
@@ -3865,6 +3867,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8032506584665241898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032506584665241897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b869836ab590f0c4eaa55ef536395970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconTrue: {fileID: 21300000, guid: 6af0e5b6242e7214aadf701cc1526dde, type: 3}
+  iconFalse: {fileID: 21300000, guid: 516aa5624888f904d9d85e08526c12e6, type: 3}
+  defaultIconState: 1
 --- !u!222 &8032506584665241900
 CanvasRenderer:
   m_ObjectHideFlags: 0

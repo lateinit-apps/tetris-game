@@ -31,6 +31,10 @@ public class GameController : MonoBehaviour
 
     private SoundManager soundManager;
 
+    public IconToggle rotateIconToggle;
+
+    private bool rotateClockwise = true;
+
     private void Start()
     {
         gameBoard = GameObject.FindObjectOfType<Board>();
@@ -112,12 +116,12 @@ public class GameController : MonoBehaviour
         }
         else if (Input.GetButtonDown("Rotate") && Time.time > timeToNextKeyRotate)
         {
-            activeShape.RotateRight();
+            activeShape.RotateClockwise(rotateClockwise);
             timeToNextKeyRotate = Time.time + keyRepeatRateRotate;
 
             if (!gameBoard.IsValidPosition(activeShape))
             {
-                activeShape.RotateLeft();
+                activeShape.RotateClockwise(!rotateClockwise);
                 PlaySound(soundManager.errorSound, 0.5f);
             }
             else
@@ -147,7 +151,10 @@ public class GameController : MonoBehaviour
                     }
                 }
             }
-
+        }
+        else if (Input.GetButtonDown("ToggleRotation"))
+        {
+            ToggleRotationDirection();
         }
     }
 
@@ -215,5 +222,15 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void ToggleRotationDirection()
+    {
+        rotateClockwise = !rotateClockwise;
+
+        if (rotateIconToggle)
+        {
+            rotateIconToggle.ToggleIcon(rotateClockwise);
+        }
     }
 }

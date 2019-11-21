@@ -45,13 +45,15 @@ public class Shape : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void RotateClockwise(bool rotateClockwise)
     {
-
-    }
-
-    private void Update()
-    {
-
+        if (rotateClockwise)
+        {
+            RotateRight();
+        }
+        else
+        {
+            RotateLeft();
+        }
     }
 }
