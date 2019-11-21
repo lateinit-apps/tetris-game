@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class GameController : MonoBehaviour
 
     [Range(0.02f, 1)]
     public float keyRepeatRateRotate = 0.05f;
+
+    private bool gameOver = false;
+    public GameObject gameOverPanel;
 
     private void Start()
     {
@@ -50,6 +54,11 @@ public class GameController : MonoBehaviour
             }
 
             spawner.transform.position = Vectorf.Round(spawner.transform.position);
+        }
+
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(false);
         }
     }
 
@@ -104,10 +113,28 @@ public class GameController : MonoBehaviour
 
                 if (!gameBoard.IsValidPosition(activeShape))
                 {
-                    LandShape();
+                    if (gameBoard.IsOverLimit(activeShape))
+                    {
+                        GameOver();
+                    }
+                    else
+                    {
+                        LandShape();
+                    }
                 }
             }
 
+        }
+    }
+
+    private void GameOver()
+    {
+        activeShape.MoveUp();
+        gameOver = true;
+
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(true);
         }
     }
 
@@ -127,11 +154,16 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (!gameBoard || !spawner || !activeShape)
+        if (!gameBoard || !spawner || !activeShape || gameOver)
         {
             return;
         }
 
         PlayerInput();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
