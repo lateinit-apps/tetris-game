@@ -185,7 +185,7 @@ public class Board : MonoBehaviour
     {
         if (rowGlowFx[idx])
         {
-            rowGlowFx[idx].transform.position = new Vector3(0, y, -1);
+            rowGlowFx[idx].transform.position = new Vector3(0, y, -2);
             rowGlowFx[idx].Play();
         }
     }
