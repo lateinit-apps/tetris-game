@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRotate: 0
+  queueOffset: {x: -0.25, y: 0.25, z: 0}
 --- !u!1 &1676511786104094580
 GameObject:
   m_ObjectHideFlags: 0
