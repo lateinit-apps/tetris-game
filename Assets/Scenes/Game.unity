@@ -2229,14 +2229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067cdfa17988af74eace032aaee84945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicEnabled: 1
+  musicEnabled: 0
   fxEnabled: 1
   musicVolume: 1
   fxVolume: 1
-  clearRowSound: {fileID: 0}
-  moveSound: {fileID: 0}
-  dropSound: {fileID: 0}
-  gameOverSound: {fileID: 0}
+  clearRowSound: {fileID: 8300000, guid: 5fcdaaa4f0e491049a234326fdfdeaac, type: 3}
+  moveSound: {fileID: 8300000, guid: b9c8b2ac92e89ed42b7d92b1b0f21de4, type: 3}
+  dropSound: {fileID: 8300000, guid: 3b7b3a8e169431e48bd32aa8f593d84d, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 8b9a81ada25c5ab40906b1e2de1579ab, type: 3}
+  errorSound: {fileID: 8300000, guid: 23a7e3c3295abb34791fdfdaf417bf43, type: 3}
   musicSource: {fileID: 548270782}
   musicClips:
   - {fileID: 8300000, guid: 6375ea5cec2e4d640978541de4046eea, type: 3}
@@ -3528,6 +3529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032506584500117380}
   - component: {fileID: 8032506584500117387}
+  - component: {fileID: 8032506584500117382}
   m_Layer: 5
   m_Name: FX
   m_TagString: Untagged
@@ -3535,6 +3537,60 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8032506584500117382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032506584500117381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8032506584266025318}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1819474957}
+        m_MethodName: ToggleFx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8032506584500117387
 MonoBehaviour:
   m_ObjectHideFlags: 0

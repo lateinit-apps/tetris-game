@@ -14,7 +14,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip clearRowSound;
     public AudioClip moveSound;
     public AudioClip dropSound;
-    public AudioClip gameOverSound;
+    public AudioClip gameOverSound;     
+    public AudioClip errorSound;
 
     public AudioSource musicSource;
 
@@ -52,6 +53,11 @@ public class SoundManager : MonoBehaviour
     {
         musicEnabled = !musicEnabled;
         UpdateMusic();
+    }
+
+    public void ToggleFx()
+    {
+        fxEnabled = !fxEnabled;
     }
 
     private void UpdateMusic()
