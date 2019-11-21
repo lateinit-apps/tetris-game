@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     private Spawner spawner;
     private Shape activeShape;
     private Ghost ghost;
+    private Holder holder;
 
     private SoundManager soundManager;
     private ScoreManager scoreManager;
@@ -42,7 +43,10 @@ public class GameController : MonoBehaviour
     {
         gameBoard = GameObject.FindObjectOfType<Board>();
         spawner = GameObject.FindObjectOfType<Spawner>();
+
         ghost = GameObject.FindObjectOfType<Ghost>();
+        holder = GameObject.FindObjectOfType<Holder>();
+
         soundManager = GameObject.FindObjectOfType<SoundManager>();
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
@@ -178,6 +182,10 @@ public class GameController : MonoBehaviour
         {
             TogglePause();
         }
+        else if (Input.GetButtonDown("Hold"))
+        {
+            Hold();
+        }
     }
 
     private void GameOver()
@@ -207,6 +215,11 @@ public class GameController : MonoBehaviour
         if (ghost)
         {
             ghost.Reset();
+        }
+
+        if (holder)
+        {
+            holder.canRelease = true;
         }
 
         activeShape = spawner.SpawnShape();
@@ -302,6 +315,38 @@ public class GameController : MonoBehaviour
             }
 
             Time.timeScale = isPaused ? 0 : 1;
+        }
+    }
+
+    public void Hold()
+    {
+        if (!holder)
+        {
+            return;
+        }
+
+        if (!holder.heldShape)
+        {
+            holder.Catch(activeShape);
+            activeShape = spawner.SpawnShape();
+            PlaySound(soundManager.holdSound);
+        }
+        else if (holder.canRelease)
+        {
+            Shape shape = activeShape;
+            activeShape = holder.Release();
+            activeShape.transform.position = spawner.transform.position;
+            holder.Catch(shape);
+            PlaySound(soundManager.holdSound);
+        }
+        else
+        {
+            PlaySound(soundManager.errorSound);
+        }
+
+        if (ghost)
+        {
+            ghost.Reset();
         }
     }
 }

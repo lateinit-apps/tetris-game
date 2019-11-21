@@ -9,3 +9,4 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
  - **Arrow up/W** - rotate piece
  - **R** - change rotation direction
  - **Esc** - pause/unpause game
+ - **C** - to catch/release a piece in hold case
