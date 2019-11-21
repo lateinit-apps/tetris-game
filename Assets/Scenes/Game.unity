@@ -7293,7 +7293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067cdfa17988af74eace032aaee84945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicEnabled: 0
+  musicEnabled: 1
   fxEnabled: 1
   musicVolume: 1
   fxVolume: 1
