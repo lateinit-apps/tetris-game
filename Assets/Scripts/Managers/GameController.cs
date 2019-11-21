@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using System.Collections;
+
 public class GameController : MonoBehaviour
 {
     private Board gameBoard;
@@ -33,6 +35,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
 
     public IconToggle rotateIconToggle;
+    public ParticlePlayer gameOverFx;
 
     private bool gameOver = false;
     private bool rotateClockwise = true;
@@ -192,15 +195,27 @@ public class GameController : MonoBehaviour
     {
         activeShape.MoveUp();
 
-        if (gameOverPanel)
-        {
-            gameOverPanel.SetActive(true);
-        }
+        StartCoroutine(GameOverRoutine());
 
         PlaySound(soundManager.gameOverSound, 5f);
         PlaySound(soundManager.gameOverVocalClip, 5f);
 
         gameOver = true;
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        if (gameOverFx)
+        {
+            gameOverFx.Play();
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (gameOverPanel)
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 
     private void LandShape()

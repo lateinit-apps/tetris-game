@@ -17,7 +17,9 @@ public class ScoreManager : MonoBehaviour
     public bool didLevelUp = false;
 
     private const int minLines = 1;
-    private const int maxLines = 1;
+    private const int maxLines = 4;
+
+    public ParticlePlayer levelUpFx;
 
     public void ScoreLines(int n)
     {
@@ -96,5 +98,10 @@ public class ScoreManager : MonoBehaviour
         level++;
         lines = linesPerLevel * level;
         didLevelUp = true;
+
+        if (levelUpFx)
+        {
+            levelUpFx.Play();
+        }
     }
 }
