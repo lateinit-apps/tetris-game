@@ -161,7 +161,8 @@ public class GameController : MonoBehaviour
         }
 
         PlaySound(soundManager.gameOverSound, 5f);
-        
+        PlaySound(soundManager.gameOverVocalClip, 5f);
+
         gameOver = true;
     }
 
@@ -182,11 +183,17 @@ public class GameController : MonoBehaviour
 
         if (gameBoard.completedRows > 0)
         {
-            PlaySound(soundManager.clearRowSound, 1f);
+            if (gameBoard.completedRows > 1)
+            {
+                AudioClip randomVocal = soundManager.GetRandomClip(soundManager.vocalClips);
+                PlaySound(randomVocal);
+            }
+
+            PlaySound(soundManager.clearRowSound);
         }
     }
 
-    private void PlaySound(AudioClip clip, float volumeMultiplier)
+    private void PlaySound(AudioClip clip, float volumeMultiplier = 1f)
     {
         if (clip && soundManager.fxEnabled)
         {

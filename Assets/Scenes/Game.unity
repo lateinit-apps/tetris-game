@@ -2290,6 +2290,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb2c6b242d5fd774e92672fa4d5dbc15, type: 3}
   - {fileID: 8300000, guid: 8ffe72dfae04fdc4a9fd8928df021aea, type: 3}
   - {fileID: 8300000, guid: 726620da1dd21bc4c91a25d29f2c9cca, type: 3}
+  vocalClips:
+  - {fileID: 8300000, guid: 6bad671440358844aab74bed8f60114b, type: 3}
+  - {fileID: 8300000, guid: 1e2cc6bf916a46f489b6161e066b46ac, type: 3}
+  - {fileID: 8300000, guid: 767d72846815cea4ca731e5ce2bd46ba, type: 3}
+  - {fileID: 8300000, guid: 9b4eaf4dfad34e141829821ce6bde839, type: 3}
+  gameOverVocalClip: {fileID: 8300000, guid: f8962ff95f3487044b5eff9f74cfef3a, type: 3}
 --- !u!1 &1836655186
 GameObject:
   m_ObjectHideFlags: 0
