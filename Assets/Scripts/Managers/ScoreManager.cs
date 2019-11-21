@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class ScoreManager : MonoBehaviour
     private int level = 1;
 
     public int linesPerLevel = 5;
+
+    public Text linesText;
+    public Text levelText;
+    public Text scoreText;
 
     private const int minLines = 1;
     private const int maxLines = 1;
@@ -30,11 +35,41 @@ public class ScoreManager : MonoBehaviour
                 score += 1200 * level;
                 break;
         }
+
+        UpdateUIText(); 
     }
 
     public void Reset()
     {
         level = 1;
         lines = linesPerLevel * level;
+    }
+
+    private void UpdateUIText()
+    {
+        if (linesText)
+        {
+            linesText.text = lines.ToString();
+        }
+        if (levelText)
+        {
+            levelText.text = level.ToString();
+        }
+        if (scoreText)
+        {
+            scoreText.text = PadZero(score, 5);
+        }
+    }
+
+    private string PadZero(int n, int padDigits)
+    {
+        string nStr = n.ToString();
+
+        while (nStr.Length < padDigits)
+        {
+            nStr = "0" + nStr;
+        }
+
+        return nStr;
     }
 }
