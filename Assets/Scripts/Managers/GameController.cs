@@ -121,6 +121,8 @@ public class GameController : MonoBehaviour
         gameBoard.StoreShapeInGrid(activeShape);
 
         activeShape = spawner.SpawnShape();
+
+        gameBoard.ClearAllRows();
     }
 
     private void Update()
