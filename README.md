@@ -8,3 +8,4 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
  - **Arrow down/S** - move piece down
  - **Arrow up/W** - rotate piece
  - **R** - change rotation direction
+ - **Esc** - pause/unpause game

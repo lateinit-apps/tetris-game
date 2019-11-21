@@ -35,6 +35,10 @@ public class GameController : MonoBehaviour
 
     private bool rotateClockwise = true;
 
+    public bool isPaused = false;
+
+    public GameObject pausePanel;
+
     private void Start()
     {
         gameBoard = GameObject.FindObjectOfType<Board>();
@@ -72,6 +76,11 @@ public class GameController : MonoBehaviour
         if (gameOverPanel)
         {
             gameOverPanel.SetActive(false);
+        }
+
+        if (pausePanel)
+        {
+            pausePanel.SetActive(false);
         }
     }
 
@@ -156,6 +165,10 @@ public class GameController : MonoBehaviour
         {
             ToggleRotationDirection();
         }
+        else if (Input.GetButtonDown("Pause"))
+        {
+            TogglePause();
+        }
     }
 
     private void GameOver()
@@ -204,8 +217,9 @@ public class GameController : MonoBehaviour
     {
         if (clip && soundManager.fxEnabled)
         {
-            AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position,
-                                        Mathf.Clamp(soundManager.fxVolume * volumeMultiplier, 0.05f, 1f));
+            AudioSource.PlayClipAtPoint(
+                clip, Camera.main.transform.position,
+                Mathf.Clamp(soundManager.fxVolume * volumeMultiplier, 0.05f, 1f));
         }
     }
 
@@ -221,6 +235,7 @@ public class GameController : MonoBehaviour
 
     public void Restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
 
@@ -231,6 +246,29 @@ public class GameController : MonoBehaviour
         if (rotateIconToggle)
         {
             rotateIconToggle.ToggleIcon(rotateClockwise);
+        }
+    }
+
+    public void TogglePause()
+    {
+        if (gameOver)
+        {
+            return;
+        }
+
+        isPaused = !isPaused;
+
+        if (pausePanel)
+        {
+            pausePanel.SetActive(isPaused);
+
+            if (soundManager)
+            {
+                soundManager.musicSource.volume =
+                    isPaused ? soundManager.musicVolume * 0.25f : soundManager.musicVolume;
+            }
+
+            Time.timeScale = isPaused ? 0 : 1;
         }
     }
 }
