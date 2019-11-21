@@ -2296,6 +2296,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 767d72846815cea4ca731e5ce2bd46ba, type: 3}
   - {fileID: 8300000, guid: 9b4eaf4dfad34e141829821ce6bde839, type: 3}
   gameOverVocalClip: {fileID: 8300000, guid: f8962ff95f3487044b5eff9f74cfef3a, type: 3}
+  musicIconToggle: {fileID: 8032506584109395478}
+  fxIconToggle: {fileID: 8032506584266025313}
 --- !u!1 &1836655186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,6 +3057,7 @@ GameObject:
   - component: {fileID: 8032506584109395474}
   - component: {fileID: 8032506584109395472}
   - component: {fileID: 8032506584109395475}
+  - component: {fileID: 8032506584109395478}
   m_Layer: 5
   m_Name: MusicIcon
   m_TagString: Untagged
@@ -3062,6 +3065,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8032506584109395478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032506584109395477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b869836ab590f0c4eaa55ef536395970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconTrue: {fileID: 21300000, guid: c231c7db1ab4a9044a0555c7bcbedc40, type: 3}
+  iconFalse: {fileID: 21300000, guid: 9fd816a50e99b1c48bedbd7c79efe9f9, type: 3}
+  defaultIconState: 1
 --- !u!222 &8032506584128250224
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3373,6 +3391,7 @@ GameObject:
   - component: {fileID: 8032506584266025319}
   - component: {fileID: 8032506584266025317}
   - component: {fileID: 8032506584266025318}
+  - component: {fileID: 8032506584266025313}
   m_Layer: 5
   m_Name: FXIcon
   m_TagString: Untagged
@@ -3380,6 +3399,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8032506584266025313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032506584266025312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b869836ab590f0c4eaa55ef536395970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconTrue: {fileID: 21300000, guid: df022c5290308764593d3a902a77892e, type: 3}
+  iconFalse: {fileID: 21300000, guid: cbf9efd4e4ddca646899edccb1755cde, type: 3}
+  defaultIconState: 1
 --- !u!222 &8032506584266025317
 CanvasRenderer:
   m_ObjectHideFlags: 0

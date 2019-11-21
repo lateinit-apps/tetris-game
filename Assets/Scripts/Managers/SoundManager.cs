@@ -14,7 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip clearRowSound;
     public AudioClip moveSound;
     public AudioClip dropSound;
-    public AudioClip gameOverSound;     
+    public AudioClip gameOverSound;
     public AudioClip errorSound;
 
     public AudioSource musicSource;
@@ -26,6 +26,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] vocalClips;
 
     public AudioClip gameOverVocalClip;
+
+    public IconToggle musicIconToggle;
+    public IconToggle fxIconToggle;
 
     private void Start()
     {
@@ -57,11 +60,21 @@ public class SoundManager : MonoBehaviour
     {
         musicEnabled = !musicEnabled;
         UpdateMusic();
+
+        if (musicIconToggle)
+        {
+            musicIconToggle.ToggleIcon(musicEnabled);
+        }
     }
 
     public void ToggleFx()
     {
         fxEnabled = !fxEnabled;
+
+        if (fxIconToggle)
+        {
+            fxIconToggle.ToggleIcon(fxEnabled);
+        }
     }
 
     private void UpdateMusic()
