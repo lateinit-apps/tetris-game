@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
     private Spawner spawner;
     private Shape activeShape;
 
+    private SoundManager soundManager;
+    private ScoreManager scoreManager;
+
     private float dropInterval = 1f;
     private float timeToDrop;
 
@@ -29,8 +32,6 @@ public class GameController : MonoBehaviour
 
     private bool gameOver = false;
 
-    private SoundManager soundManager;
-
     public IconToggle rotateIconToggle;
 
     private bool rotateClockwise = true;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
         gameBoard = GameObject.FindObjectOfType<Board>();
         spawner = GameObject.FindObjectOfType<Spawner>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
         timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
         timeToNextKeyRotate = Time.time + keyRepeatRateRotate;
@@ -58,6 +60,12 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("WARNING! There is no sound manager defined!");
         }
+
+        if (!scoreManager)
+        {
+            Debug.Log("WARNING! There is no score manager defined!");
+        }
+
 
         if (!spawner)
         {
@@ -203,6 +211,8 @@ public class GameController : MonoBehaviour
 
         if (gameBoard.completedRows > 0)
         {
+            scoreManager.ScoreLines(gameBoard.completedRows);
+            
             if (gameBoard.completedRows > 1)
             {
                 AudioClip randomVocal = soundManager.GetRandomClip(soundManager.vocalClips);
@@ -225,7 +235,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (!gameBoard || !spawner || !activeShape || gameOver || !soundManager)
+        if (!gameBoard || !spawner || !activeShape || gameOver || !soundManager || !scoreManager)
         {
             return;
         }
