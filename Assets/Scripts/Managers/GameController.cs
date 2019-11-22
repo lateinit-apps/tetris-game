@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour
     private float timeToNextKeyDown;
     private float timeToNextKeyRotate;
 
+    private float timeToNextSwipeLeftRight;
+    private float timeToNextSwipeDown;
+
     [Range(0.02f, 1)]
     public float keyRepeatRateLeftRight = 0.1f;
 
@@ -30,6 +33,12 @@ public class GameController : MonoBehaviour
 
     [Range(0.02f, 1)]
     public float keyRepeatRateRotate = 0.05f;
+
+    [Range(0.02f, 1)]
+    public float swipeRepeatRateLeftRight = 0.25f;
+
+    [Range(0.02f, 1)]
+    public float swipeRepeatRateDown = 0.05f;
 
     public GameObject pausePanel;
     public GameObject gameOverPanel;
@@ -121,6 +130,7 @@ public class GameController : MonoBehaviour
     {
         activeShape.MoveRight();
         timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
+        timeToNextSwipeLeftRight = Time.time + swipeRepeatRateLeftRight;
 
         if (!gameBoard.IsValidPosition(activeShape))
         {
@@ -137,6 +147,7 @@ public class GameController : MonoBehaviour
     {
         activeShape.MoveLeft();
         timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
+        timeToNextSwipeLeftRight = Time.time + swipeRepeatRateLeftRight;
 
         if (!gameBoard.IsValidPosition(activeShape))
         {
@@ -169,6 +180,7 @@ public class GameController : MonoBehaviour
     {
         timeToDrop = Time.time + dropIntervalModded;
         timeToNextKeyDown = Time.time + keyRepeatRateDown;
+        timeToNextSwipeDown = Time.time + swipeRepeatRateDown;
 
         if (activeShape)
         {
@@ -214,7 +226,7 @@ public class GameController : MonoBehaviour
         {
             MoveDown();
         }
-        else if ((swipeDirection == Direction.right && Time.time > timeToNextKeyLeftRight) ||
+        else if ((swipeDirection == Direction.right && Time.time > timeToNextSwipeLeftRight) ||
                   swipeEndDirection == Direction.right)
         {
             MoveRight();
@@ -222,7 +234,7 @@ public class GameController : MonoBehaviour
             swipeDirection = Direction.none;
             swipeEndDirection = Direction.none;
         }
-        else if ((swipeDirection == Direction.left && Time.time > timeToNextKeyLeftRight) ||
+        else if ((swipeDirection == Direction.left && Time.time > timeToNextSwipeLeftRight) ||
                   swipeEndDirection == Direction.left)
         {
             MoveLeft();
@@ -236,7 +248,7 @@ public class GameController : MonoBehaviour
 
             swipeEndDirection = Direction.none;
         }
-        else if (swipeDirection == Direction.down && Time.time > timeToNextKeyDown)
+        else if (swipeDirection == Direction.down && Time.time > timeToNextSwipeDown)
         {
             MoveDown();
 

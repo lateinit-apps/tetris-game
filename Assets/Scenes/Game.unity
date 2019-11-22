@@ -6315,6 +6315,8 @@ MonoBehaviour:
   keyRepeatRateLeftRight: 0.1
   keyRepeatRateDown: 0.05
   keyRepeatRateRotate: 0.05
+  swipeRepeatRateLeftRight: 0.25
+  swipeRepeatRateDown: 0.05
   pausePanel: {fileID: 1968456175}
   gameOverPanel: {fileID: 219639869}
   rotateIconToggle: {fileID: 8032506584665241898}
@@ -8409,17 +8411,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df620762fb420eb4e94b78a9dc9d7923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rowGlowFx:
+  - {fileID: 1931187394}
+  - {fileID: 361696489}
+  - {fileID: 1931183465}
+  - {fileID: 693649608}
   emptySprite: {fileID: 5745196586078903165, guid: 6d0780b3676c55046ab0334565967d78,
     type: 3}
   height: 30
   width: 10
   header: 8
   completedRows: 0
-  rowGlowFx:
-  - {fileID: 1931187394}
-  - {fileID: 361696489}
-  - {fileID: 1931183465}
-  - {fileID: 693649608}
 --- !u!4 &2105124831
 Transform:
   m_ObjectHideFlags: 0
