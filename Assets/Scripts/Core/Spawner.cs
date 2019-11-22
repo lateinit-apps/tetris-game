@@ -6,17 +6,13 @@ public class Spawner : MonoBehaviour
 {
     public Shape[] allShapes;
     public Transform[] queuedXforms = new Transform[3];
+    public ParticlePlayer spawnFx;
 
     private Shape[] queuedShapes = new Shape[3];
 
     private float queueScale = 0.5f;
 
-    public ParticlePlayer spawnFx;
-
-    private void Start()
-    {
-        InitQueue();
-    }
+    private void Start() => InitQueue();
 
     private Shape GetRandomShape()
     {
@@ -33,29 +29,6 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public Shape SpawnShape()
-    {
-        Shape shape = null;
-        shape = GetQueuedShape();
-        shape.transform.position = transform.position;
-
-        StartCoroutine(GrowShape(shape, transform.position, 0.25f));
-
-        if (spawnFx)
-        {
-            spawnFx.Play();
-        }
-
-        if (shape)
-        {
-            return shape;
-        }
-        else
-        {
-            Debug.Log("WARNING! Invalid shape in spawner!");
-            return null;
-        }
-    }
 
     private void InitQueue()
     {
@@ -106,7 +79,7 @@ public class Spawner : MonoBehaviour
         return firstShape;
     }
 
-    IEnumerator GrowShape(Shape shape, Vector3 position, float growTime = 0.5f)
+    private IEnumerator GrowShape(Shape shape, Vector3 position, float growTime = 0.5f)
     {
         float size = 0f;
 
@@ -125,5 +98,29 @@ public class Spawner : MonoBehaviour
         }
 
         shape.transform.localScale = Vector3.one;
+    }
+
+    public Shape SpawnShape()
+    {
+        Shape shape = null;
+        shape = GetQueuedShape();
+        shape.transform.position = transform.position;
+
+        StartCoroutine(GrowShape(shape, transform.position, 0.25f));
+
+        if (spawnFx)
+        {
+            spawnFx.Play();
+        }
+
+        if (shape)
+        {
+            return shape;
+        }
+        else
+        {
+            Debug.Log("WARNING! Invalid shape in spawner!");
+            return null;
+        }
     }
 }

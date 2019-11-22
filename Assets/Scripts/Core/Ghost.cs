@@ -2,11 +2,11 @@
 
 public class Ghost : MonoBehaviour
 {
+    public Color color = new Color(1f, 1f, 1f, 0.2f);
+
     private Shape ghostShape = null;
 
     private bool hitBottom = false;
-
-    public Color color = new Color(1f, 1f, 1f, 0.2f);
 
     public void DrawGhost(Shape originalShape, Board gameBoard)
     {
@@ -44,8 +44,5 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    public void Reset()
-    {
-        Destroy(ghostShape.gameObject);
-    }
+    public void Reset() => Destroy(ghostShape.gameObject);
 }

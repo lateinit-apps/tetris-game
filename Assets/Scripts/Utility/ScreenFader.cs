@@ -33,7 +33,7 @@ public class ScreenFader : MonoBehaviour
         StartCoroutine(FadeRoutine());
     }
 
-    IEnumerator FadeRoutine()
+    private IEnumerator FadeRoutine()
     {
         yield return new WaitForSeconds(delay);
 

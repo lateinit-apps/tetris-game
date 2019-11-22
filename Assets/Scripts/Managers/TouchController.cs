@@ -61,10 +61,7 @@ public class TouchController : MonoBehaviour
         return direction;
     }
 
-    private void Start()
-    {
-        Diagnostic("", "");
-    }
+    private void Start() => Diagnostic("", "");
 
     private void Update()
     {

@@ -9,7 +9,7 @@ public class IconToggle : MonoBehaviour
 
     public bool defaultIconState = true;
 
-    Image image;
+    private Image image;
 
     private void Start()
     {

@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
     public bool isPaused = false;
 
-    enum Direction { none, left, right, up, down }
+    private enum Direction { none, left, right, up, down }
 
     private Direction swipeDirection = Direction.none;
     private Direction swipeEndDirection = Direction.none;
@@ -268,7 +268,7 @@ public class GameController : MonoBehaviour
         gameOver = true;
     }
 
-    IEnumerator GameOverRoutine()
+    private IEnumerator GameOverRoutine()
     {
         if (gameOverFx)
         {
@@ -359,6 +359,32 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void SwipeHandler(Vector2 swipeMovement)
+    {
+        swipeDirection = GetDirection(swipeMovement);
+    }
+
+    private void SwipeEndHandler(Vector2 swipeMovement)
+    {
+        swipeEndDirection = GetDirection(swipeMovement);
+    }
+
+    private Direction GetDirection(Vector2 swipeMovement)
+    {
+        Direction swipeDirection = Direction.none;
+
+        if (Mathf.Abs(swipeMovement.x) > Mathf.Abs(swipeMovement.y))
+        {
+            swipeDirection = swipeMovement.x >= 0 ? Direction.right : Direction.left;
+        }
+        else
+        {
+            swipeDirection = swipeMovement.y >= 0 ? Direction.up : Direction.down;
+        }
+
+        return swipeDirection;
+    }
+
     public void Restart()
     {
         Time.timeScale = 1f;
@@ -428,31 +454,5 @@ public class GameController : MonoBehaviour
         {
             ghost.Reset();
         }
-    }
-
-    private void SwipeHandler(Vector2 swipeMovement)
-    {
-        swipeDirection = GetDirection(swipeMovement);
-    }
-
-    private void SwipeEndHandler(Vector2 swipeMovement)
-    {
-        swipeEndDirection = GetDirection(swipeMovement);
-    }
-
-    private Direction GetDirection(Vector2 swipeMovement)
-    {
-        Direction swipeDirection = Direction.none;
-
-        if (Mathf.Abs(swipeMovement.x) > Mathf.Abs(swipeMovement.y))
-        {
-            swipeDirection = swipeMovement.x >= 0 ? Direction.right : Direction.left;
-        }
-        else
-        {
-            swipeDirection = swipeMovement.y >= 0 ? Direction.up : Direction.down;
-        }
-
-        return swipeDirection;
     }
 }

@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 
-using System.Collections;
+using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+    private Transform[,] grid;
+
+    public ParticlePlayer[] rowGlowFx = new ParticlePlayer[4];
+
     public Transform emptySprite;
 
     public int height = 30;
@@ -11,51 +15,16 @@ public class Board : MonoBehaviour
 
     public int header = 8;
 
-    private Transform[,] grid;
-
     public int completedRows = 0;
 
-    public ParticlePlayer[] rowGlowFx = new ParticlePlayer[4];
+    private void Start() => DrawEmptyCells();
 
-    private void Awake()
-    {
-        grid = new Transform[width, height];
-    }
+    private void Awake() => grid = new Transform[width, height];
 
-    private void Start()
-    {
-        DrawEmptyCells();
-    }
+    private bool IsWithinBoard(int x, int y) => (x >= 0 && x < width && y >= 0);
 
-    private bool IsWithinBoard(int x, int y)
-    {
-        return (x >= 0 && x < width && y >= 0);
-    }
-
-    private bool IsOccupied(int x, int y, Shape shape)
-    {
-        return (grid[x, y] != null && grid[x, y].parent != shape.transform);
-    }
-
-    public bool IsValidPosition(Shape shape)
-    {
-        foreach (Transform child in shape.transform)
-        {
-            Vector2 pos = Vectorf.Round(child.position);
-
-            if (!IsWithinBoard((int)pos.x, (int)pos.y))
-            {
-                return false;
-            }
-
-            if (IsOccupied((int)pos.x, (int)pos.y, shape))
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
+    private bool IsOccupied(int x, int y, Shape shape) =>
+        grid[x, y] != null && grid[x, y].parent != shape.transform;
 
     private void DrawEmptyCells()
     {
@@ -77,20 +46,6 @@ public class Board : MonoBehaviour
         else
         {
             Debug.Log("WARNING! Please assign the emptySprite object!");
-        }
-    }
-
-    public void StoreShapeInGrid(Shape shape)
-    {
-        if (shape == null)
-        {
-            return;
-        }
-
-        foreach (Transform child in shape.transform)
-        {
-            Vector2 pos = Vectorf.Round(child.position);
-            grid[(int)pos.x, (int)pos.y] = child;
         }
     }
 
@@ -141,6 +96,49 @@ public class Board : MonoBehaviour
         }
     }
 
+    private void ClearRowFx(int idx, int y)
+    {
+        if (rowGlowFx[idx])
+        {
+            rowGlowFx[idx].transform.position = new Vector3(0, y, -2);
+            rowGlowFx[idx].Play();
+        }
+    }
+
+    public bool IsValidPosition(Shape shape)
+    {
+        foreach (Transform child in shape.transform)
+        {
+            Vector2 pos = Vectorf.Round(child.position);
+
+            if (!IsWithinBoard((int)pos.x, (int)pos.y))
+            {
+                return false;
+            }
+
+            if (IsOccupied((int)pos.x, (int)pos.y, shape))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void StoreShapeInGrid(Shape shape)
+    {
+        if (shape == null)
+        {
+            return;
+        }
+
+        foreach (Transform child in shape.transform)
+        {
+            Vector2 pos = Vectorf.Round(child.position);
+            grid[(int)pos.x, (int)pos.y] = child;
+        }
+    }
+
     public IEnumerator ClearAllRows()
     {
         completedRows = 0;
@@ -179,14 +177,5 @@ public class Board : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void ClearRowFx(int idx, int y)
-    {
-        if (rowGlowFx[idx])
-        {
-            rowGlowFx[idx].transform.position = new Vector3(0, y, -2);
-            rowGlowFx[idx].Play();
-        }
     }
 }

@@ -21,10 +21,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicSource;
 
     public AudioClip[] musicClips;
+    public AudioClip[] vocalClips;
 
     private AudioClip randomMusicClip;
-
-    public AudioClip[] vocalClips;
 
     public AudioClip gameOverVocalClip;
     public AudioClip levelUpVocalClip;
@@ -36,6 +35,22 @@ public class SoundManager : MonoBehaviour
     {
         randomMusicClip = GetRandomClip(musicClips);
         PlayBackgroundMusic(randomMusicClip);
+    }
+
+    private void UpdateMusic()
+    {
+        if (musicSource.isPlaying != musicEnabled)
+        {
+            if (musicEnabled)
+            {
+                randomMusicClip = GetRandomClip(musicClips);
+                PlayBackgroundMusic(randomMusicClip);
+            }
+            else
+            {
+                musicSource.Stop();
+            }
+        }
     }
 
     public AudioClip GetRandomClip(AudioClip[] clips)
@@ -76,22 +91,6 @@ public class SoundManager : MonoBehaviour
         if (fxIconToggle)
         {
             fxIconToggle.ToggleIcon(fxEnabled);
-        }
-    }
-
-    private void UpdateMusic()
-    {
-        if (musicSource.isPlaying != musicEnabled)
-        {
-            if (musicEnabled)
-            {
-                randomMusicClip = GetRandomClip(musicClips);
-                PlayBackgroundMusic(randomMusicClip);
-            }
-            else
-            {
-                musicSource.Stop();
-            }
         }
     }
 }

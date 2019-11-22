@@ -21,6 +21,36 @@ public class ScoreManager : MonoBehaviour
 
     public ParticlePlayer levelUpFx;
 
+    private void Start() => Reset();
+
+    private void UpdateUIText()
+    {
+        if (linesText)
+        {
+            linesText.text = lines.ToString();
+        }
+        if (levelText)
+        {
+            levelText.text = level.ToString();
+        }
+        if (scoreText)
+        {
+            scoreText.text = PadZero(score, 5);
+        }
+    }
+
+    private string PadZero(int n, int padDigits)
+    {
+        string nStr = n.ToString();
+
+        while (nStr.Length < padDigits)
+        {
+            nStr = "0" + nStr;
+        }
+
+        return nStr;
+    }
+
     public void ScoreLines(int n)
     {
         didLevelUp = false;
@@ -58,39 +88,6 @@ public class ScoreManager : MonoBehaviour
         level = 1;
         lines = linesPerLevel * level;
         UpdateUIText();
-    }
-
-    private void Start()
-    {
-        Reset();
-    }
-
-    private void UpdateUIText()
-    {
-        if (linesText)
-        {
-            linesText.text = lines.ToString();
-        }
-        if (levelText)
-        {
-            levelText.text = level.ToString();
-        }
-        if (scoreText)
-        {
-            scoreText.text = PadZero(score, 5);
-        }
-    }
-
-    private string PadZero(int n, int padDigits)
-    {
-        string nStr = n.ToString();
-
-        while (nStr.Length < padDigits)
-        {
-            nStr = "0" + nStr;
-        }
-
-        return nStr;
     }
 
     public void LevelUp()

@@ -4,10 +4,7 @@ public class ParticlePlayer : MonoBehaviour
 {
     public ParticleSystem[] allParticles;
 
-    private void Start()
-    {
-        allParticles = GetComponentsInChildren<ParticleSystem>();
-    }
+    private void Start() => allParticles = GetComponentsInChildren<ParticleSystem>();
 
     public void Play()
     {
