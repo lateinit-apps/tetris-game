@@ -10,7 +10,6 @@ public class Shape : MonoBehaviour
 
     public void MoveLeft() => Move(new Vector3(-1, 0, 0));
 
-
     public void MoveRight() => Move(new Vector3(1, 0, 0));
 
     public void MoveUp() => Move(new Vector3(0, 1, 0));
