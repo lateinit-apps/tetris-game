@@ -6,6 +6,7 @@ public class TouchController : MonoBehaviour
     public delegate void TouchEventHandler(Vector2 swipe);
 
     public static event TouchEventHandler SwipeEvent;
+    public static event TouchEventHandler SwipeEndEvent;
 
     private Vector2 touchMovement;
 
@@ -21,6 +22,14 @@ public class TouchController : MonoBehaviour
         if (SwipeEvent != null)
         {
             SwipeEvent(touchMovement);
+        }
+    }
+
+    private void OnSwipeEnd()
+    {
+        if (SwipeEndEvent != null)
+        {
+            SwipeEndEvent(touchMovement);
         }
     }
 
@@ -78,6 +87,10 @@ public class TouchController : MonoBehaviour
                     Diagnostic("Swipe detected",
                                touchMovement.ToString() + " " + SwipeDiagnostic(touchMovement));
                 }
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                OnSwipeEnd();
             }
         }
     }

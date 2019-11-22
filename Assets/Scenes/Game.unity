@@ -1985,8 +1985,8 @@ MonoBehaviour:
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: text2
 --- !u!222 &491184808
@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diagnosticText1: {fileID: 1163537832}
   diagnosticText2: {fileID: 491184807}
-  useDiagnostic: 1
+  useDiagnostic: 0
 --- !u!1001 &532897203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4766,8 +4766,8 @@ MonoBehaviour:
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: text1
 --- !u!222 &1163537833
