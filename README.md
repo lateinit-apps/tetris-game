@@ -23,7 +23,7 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
 
 <img src="Docs/images/Screenshot_1.png" width="33%"><img src="Docs/images/Screenshot_2.png" width="33%">
 
-<img src="Docs/images/Screenshot_3.png" width="33%"><img src="Docs/images/Screenshot_4.png" width="33%"><img src="docs/images/Screenshot_5.png" width="33%">
+<img src="Docs/images/Screenshot_3.png" width="33%"><img src="Docs/images/Screenshot_4.png" width="33%"><img src="Docs/images/Screenshot_5.png" width="33%">
 
 
 ## Gameplay
