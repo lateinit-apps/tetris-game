@@ -1,4 +1,6 @@
-# A tetris game
+# Solaire Tetris
+
+ <a href="https://play.google.com/store/apps/details?id=com.lateinit.apps.tetris"><img border="0" alt="Solaire Tetrix" src="docs/images/google-play-badge.png" width="35%" height="35%"></a>
 
 A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.udemy.com/course/make-a-tetris-style-puzzler-in-unity/).
 
@@ -18,6 +20,10 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
  - **Swipe left/right** - move piece to the left/right
  - **Swipe down/swipe down & hold** - move piece down
  - **Swipe up/tap** - rotate piece
+
+## Else
+
+ - Toogle music off and on to change music track.
 
 ## Screenshots
 
