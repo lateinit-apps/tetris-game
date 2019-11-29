@@ -34,7 +34,7 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
 
 ## Gameplay
 
-![gameplay](Docs/images/gameplay.gif)
+![gameplay](Docs/Images/gameplay.gif)
 
 ## Credits
 
