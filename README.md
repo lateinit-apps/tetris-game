@@ -1,6 +1,6 @@
 # Solaire Tetris
 
- <a href="https://play.google.com/store/apps/details?id=com.lateinit.apps.tetris"><img border="0" alt="Solaire Tetrix" src="docs/images/google-play-badge.png" width="35%" height="35%"></a>
+ <a href="https://play.google.com/store/apps/details?id=com.lateinit.apps.tetris"><img border="0" alt="Solaire Tetrix" src="Docs/Images/google-play-badge.png" width="35%" height="35%"></a>
 
 A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.udemy.com/course/make-a-tetris-style-puzzler-in-unity/).
 
@@ -27,9 +27,9 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
 
 ## Screenshots
 
-<img src="Docs/images/Screenshot_1.png" width="33%"><img src="Docs/images/Screenshot_2.png" width="33%">
+<img src="Docs/Images/Screenshot_1.png" width="33%"><img src="Docs/Images/Screenshot_2.png" width="33%">
 
-<img src="Docs/images/Screenshot_3.png" width="33%"><img src="Docs/images/Screenshot_4.png" width="33%"><img src="Docs/images/Screenshot_5.png" width="33%">
+<img src="Docs/Images/Screenshot_3.png" width="33%"><img src="Docs/Images/Screenshot_4.png" width="33%"><img src="Docs/Images/Screenshot_5.png" width="33%">
 
 
 ## Gameplay
