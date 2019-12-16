@@ -8,29 +8,28 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
 
 ### PC
 
- - **Arrow left/right or A/D** - move piece to the left/right
- - **Arrow down/S** - move piece down
- - **Arrow up/W** - rotate piece
- - **R** - change rotation direction
- - **C** - to catch/release a piece in hold case
- - **Esc** - pause/unpause game
+- **Arrow left/right or A/D** - move piece to the left/right
+- **Arrow down/S** - move piece down
+- **Arrow up/W** - rotate piece
+- **R** - change rotation direction
+- **C** - to catch/release a piece in hold case
+- **Esc** - pause/unpause game
 
 ### Mobile
 
- - **Swipe left/right** - move piece to the left/right
- - **Swipe down/swipe down & hold** - move piece down
- - **Swipe up/tap** - rotate piece
+- **Swipe left/right** - move piece to the left/right
+- **Swipe down/swipe down & hold** - move piece down
+- **Swipe up/tap** - rotate piece
 
 ## Else
 
- - Toogle music off and on to change music track.
+- Toogle music off and on to change music track.
 
 ## Screenshots
 
 <img src="Docs/Images/Screenshot_1.png" width="33%"><img src="Docs/Images/Screenshot_2.png" width="33%">
 
 <img src="Docs/Images/Screenshot_3.png" width="33%"><img src="Docs/Images/Screenshot_4.png" width="33%"><img src="Docs/Images/Screenshot_5.png" width="33%">
-
 
 ## Gameplay
 
@@ -39,8 +38,9 @@ A tetris-style puzzler in Unity created under Wilmer Lin's [course](https://www.
 ## Credits
 
 Used music:
- - Pegboard Nerds & Tristam - Razor sharp (Intro)
- - 8-Bit Universe - Immortals (8-Bit Version)
- - Open Hexagon - Let's Increment
- - Groove Addicts - Conviction
- - Jack Russel - Pointless
+
+- Pegboard Nerds & Tristam - Razor sharp (Intro)
+- 8-Bit Universe - Immortals (8-Bit Version)
+- Open Hexagon - Let's Increment
+- Groove Addicts - Conviction
+- Jack Russel - Pointless
